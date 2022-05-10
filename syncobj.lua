@@ -45,6 +45,7 @@ function source:diff(obj)
 	local last = obj.__last
 	local changeset = obj.__changeset
 	local change = obj.__change
+	local len = #changeset
 	for k,v in pairs(change) do
 		if last[k] ~= v then
 			changeset[i] = k
@@ -66,7 +67,7 @@ function source:diff(obj)
 		last[k] = real[k]
 	end
 	changeset[i] = remove
-	for j = i+1, #changeset do
+	for j = i+1, len do
 		changeset[j] = nil
 	end
 	return changeset
